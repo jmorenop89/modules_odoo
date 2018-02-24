@@ -1,0 +1,31 @@
+<odoo>
+    <record model="ir.ui.view" id="inherit_res_partner_form_jnq">
+        <field name="name">jnq.inherit.res.partner.form.jnq</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='vat']" position="before">
+                    <field name="x_commercial_name"/>
+                </xpath>
+                <xpath expr="//field[@name='lang']" position="after">
+                    <field name="x_janaq_partner"/>
+                </xpath>
+            </data>
+        </field>    
+    </record>
+
+    <record model="ir.ui.view" id="inherit_res_partner_tree_jnq">
+        <field name="name">jnq.inherit.res.partner.tree.jnq</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='display_name']" position="after">
+                    <field name="x_commercial_name"/>
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+</odoo>
