@@ -1,0 +1,114 @@
+<odoo>
+    <!-- Action to open Academic Module -->
+    <!--<act_window id="action_jnq_academic" name="Academico" res_model="academic.career" view_mode="tree,form" />-->
+    <!-- Menu item to open Academic Module -->
+    <!--<menuitem id="menu_jnq_academic" name="Academico" action="action_jnq_academic" web_icon="jnq_academic,static/description/icon.png"/>-->
+    
+    <!-- Academic Module Career views -->
+    <record model="ir.ui.view" id="jnq_academic_career_form_view">
+        <field name="name">academic.career.form</field>
+        <field name="model">academic.career</field>
+        <field name="arch" type="xml">
+            <form string="Academic Career Form">
+                <header></header>
+                <group>
+                    <group string="Datos de la Carrera">
+                        <field name="x_name"/>
+                        <field name="x_code"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+    </record>
+    
+    <record model="ir.ui.view" id="jnq_academic_student_form_view">
+        <field name="name">academic.student.form</field>
+        <field name="model">academic.student</field>
+        <field name="arch" type="xml">
+            <form string="Academic Student Form">
+                <header></header>
+                <group>
+                    <group string="Datos del Estudiante">
+                        <field name="x_registry_number"/>
+                        <field name="x_name"/>
+                        <field name="x_birthdate"/>
+                        <field name="x_address"/>
+                        <field name="x_tutor"/>
+                        <field name="x_career"/>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="jnq_academic_career_tree_view">
+        <field name="name">academic.career.tree</field>
+        <field name="model">academic.career</field>
+        <field name="arch" type="xml">
+            <tree string="Academic Career Tree" default_order="x_code">
+                <field name="x_name"/>
+                <field name="x_code"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="jnq_academic_student_tree_view">
+        <field name="name">academic.student.tree</field>
+        <field name="model">academic.student</field>
+        <field name="arch" type="xml">
+            <tree string="Academic Student Tree" default_order="x_registry_number">
+                <field name="x_registry_number"/>
+                <field name="x_name"/>
+                <field name="x_birthdate"/>
+                <field name="x_address"/>
+                <field name="x_tutor" domain="[('is_company','=',False)]" />
+                <field name="x_career"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record model="ir.ui.view" id="jnq_academic_career_search_view">
+        <field name="name">academic.career.search</field>
+        <field name="model">academic.career</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="x_name"/>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="jnq_academic_student_search_view">
+        <field name="name">academic.student.search</field>
+        <field name="model">academic.student</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="x_name"/>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="academic_career_action">
+        <field name="name">Academic Careers</field>
+        <field name="res_model">academic.career</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Click on create button to create a new career.
+            </p>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="academic_student_action">
+        <field name="name">Academic Student</field>
+        <field name="res_model">academic.student</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Click on create button to create a new student.
+            </p>
+        </field>
+    </record>
+    <menuitem id="main_academic_menu" name="Academico" web_icon="jnq_academic,static/description/icon.png"/>
+    <menuitem id="academic_career_menu" name="Carreras" parent="main_academic_menu" action="academic_career_action"/>
+    <menuitem id="academic_student_menu" name="Estudiantes" parent="main_academic_menu" action="academic_student_action"/>
+</odoo>
